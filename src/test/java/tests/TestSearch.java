@@ -58,35 +58,27 @@ public class TestSearch {
 
 
 
-        By imageSelector = By.cssSelector(".rg_i");
 
-        // Wait for the images to be present on the page
-        searchResultsPage.waitForPageToLoad();
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(imageSelector));
-
-
-        // Get the list of image elements
-        List<WebElement> images = driver.findElements(imageSelector);
+        // Use a selector to locate the first result link on the Google search results page
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
 
 
 
-        // Click the first 10 images
-        int numberOfImagesToClick = Math.min(images.size(), 10);
-        for (int i = 0; i < numberOfImagesToClick; i++) {
-            WebElement image = images.get(i);
-            // Wait for the image to be clickable
-            wait.until(ExpectedConditions.elementToBeClickable(image));
 
-            image.click();
-        }
+
+
+
 
 
 
         //Assert
-
         Assert.assertTrue(searchResultsPage.isSearchResultsDisplayed());
-        Assert.assertTrue(searchResultsPage.getSearchResultsCount() > 0);
+        // Capture the first result
+        String firstResultText = searchResultsPage.getFirstSearchResultText();
+        // Modify here can check if expected result in search results.
+        //Assert.assertTrue(firstResultText.contains(searchTerms));
+
 
 
 

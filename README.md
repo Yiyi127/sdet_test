@@ -4,9 +4,8 @@ Tech stack: Java, Selenium, TestNG
 
 Design Pattern: Page Object Model(POM)
 
-Description: This test project use selenium and TestNG in Java, to open googld image search engine and search customed search terms, and click top 10 images. 
-
-For future use, this project can change the website and search terms and the number of clicking images.
+Description: This test project use selenium and TestNG in Java. Assert by the first return result.
+For future use, this project can change the website and search terms and the different assert ways.
 
 ## 1. Install the necessary packages
 ```

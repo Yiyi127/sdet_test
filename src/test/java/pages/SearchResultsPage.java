@@ -13,8 +13,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class SearchResultsPage extends BasePage {
-    @FindBy(className = "Q4LuWd")
-    private List<WebElement> searchResults;
+    @FindBy(css = "#search .g a")
+    private WebElement firstSearchResult;
+
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
@@ -23,8 +24,10 @@ public class SearchResultsPage extends BasePage {
 
     public boolean isSearchResultsDisplayed(){
         try{
-            WebElement searchResults = driver.findElement(By.className("Q4LuWd"));
-            return searchResults.isDisplayed();
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOf(firstSearchResult));
+
+            return firstSearchResult.isDisplayed();
 
         }catch(NoSuchElementException e){
             return false;
@@ -32,19 +35,18 @@ public class SearchResultsPage extends BasePage {
 
     }
 
-    public int getSearchResultsCount(){
-        try{
-            List<WebElement> searchResults = driver.findElements(By.className("Q4LuWd"));
-            return searchResults.size();
-        }
-        catch(NoSuchElementException e){
-            return 0;
-        }
+    public String getFirstSearchResultText() {
+        return firstSearchResult.getText();
     }
+
+
 
 
     public void waitForPageToLoad() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".rg_i")));
+
     }
+
+
+
 }

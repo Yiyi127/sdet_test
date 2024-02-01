@@ -18,7 +18,7 @@ public class SearchPage extends BasePage {
 
 
     public void openWebsite(){
-        driver.get("https://www.google.com/imghp?hl=en");
+        driver.get("https://www.google.com/");
     }
 
     public void enterSearchTerm(String term) {
