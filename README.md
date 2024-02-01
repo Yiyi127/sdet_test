@@ -5,7 +5,7 @@ Tech stack: Java, Selenium, TestNG
 Design Pattern: Page Object Model(POM)
 
 Description: This test project use selenium and TestNG in Java. Assert by the first return result.
-For future use, this project can change the website and search terms and the different assert ways.
+For future use, this project can change the website and search terms and the different assertion ways.
 
 ## 1. Install the necessary packages
 ```
